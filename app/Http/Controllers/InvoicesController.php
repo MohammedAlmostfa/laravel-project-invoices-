@@ -55,7 +55,7 @@ class InvoicesController extends Controller
             $image = $request->file('pic');
             $file_name = $image->getClientOriginalName();
             $invoice_number = $request->invoice_number;
-
+            
             $attachments = new invoice_attachment();
             $attachments->file_name = $file_name;
             $attachments->invoice_number = $invoice_number;
@@ -85,6 +85,12 @@ class InvoicesController extends Controller
     {
         $products = DB::table("products")->where("section_id", $id)->pluck("Product_name", "id");
         return json_encode($products);
+    }
+    public function edait($id)
+    {
+        $invoices = invoices::where('id', $id)->first();
+        $sections = section::all();
+        return view('invoices.edit_invoice', compact('sections', 'invoices'));
     }
 
   

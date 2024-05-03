@@ -21,11 +21,15 @@ Route::get('/welcome', function () {
 
 Auth::routes();
 Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('View_file/{invoice_number}/{file_name}',[InvocesDetailsController::class, 'open_file']);
+Route::get('download/{invoice_number}/{file_name}', [InvocesDetailsController::class, 'get_file']);
+Route::post('/delete_file', [InvocesDetailsController::class, 'destroy'])->name('delete_file');
 Route::resource('/invoices',invoicesController::class);
 Route::resource('section', SectionController::class);
 Route::resource('product', ProductController::class);
 Route::get('sectionn/{id}',[InvoicesController::class,'getproducts']);
 Route::get('invoicesdetails/{id}', [InvocesDetailsController::class, 'edait'])->name('invoicesdetails');
+Route::get('edit_invoicen/{id}',[InvoicesController::class,'edait']);
 Route::get('/{page}', [AdminController::class, 'index']);
 
 

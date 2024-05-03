@@ -10,7 +10,12 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <!--Internal   Notify -->
+
+    <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+
+    
+
+
     <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('page-header')
@@ -127,47 +132,22 @@
 
                                         <td>{{ $invoice->note }}</td>
                                         <td>
-                                            <div class="dropdown">
-                                                <button aria-expanded="false" aria-haspopup="true"
-                                                    class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
-                                                    type="button">العمليات<i class="fas fa-caret-down ml-1"></i></button>
-                                                <div class="dropdown-menu tx-13">
-                                                    @can('تعديل الفاتورة')
-                                                        <a class="dropdown-item"
-                                                            href=" {{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل
-                                                            الفاتورة</a>
-                                                    @endcan
-
-                                                    @can('حذف الفاتورة')
-                                                        <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
-                                                            data-toggle="modal" data-target="#delete_invoice"><i
-                                                                class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
-                                                            الفاتورة</a>
-                                                    @endcan
-
-                                                    @can('تغير حالة الدفع')
-                                                        <a class="dropdown-item"
-                                                            href="{{ URL::route('Status_show', [$invoice->id]) }}"><i
-                                                                class=" text-success fas
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    fa-money-bill"></i>&nbsp;&nbsp;تغير
-                                                            حالة
-                                                            الدفع</a>
-                                                    @endcan
-
-                                                    @can('ارشفة الفاتورة')
-                                                        <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
-                                                            data-toggle="modal" data-target="#Transfer_invoice"><i
-                                                                class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;نقل الي
-                                                            الارشيف</a>
-                                                    @endcan
-
-                                                    @can('طباعةالفاتورة')
-                                                        <a class="dropdown-item" href="Print_invoice/{{ $invoice->id }}"><i
-                                                                class="text-success fas fa-print"></i>&nbsp;&nbsp;طباعة
-                                                            الفاتورة
-                                                        </a>
-                                                    @endcan
-                                                </div>
+                                             <div class="dropdown-center">
+                                                            <button class="btn ripple btn-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                              العمليات
+                                                           </button>
+                                                          <ul class="dropdown-menu">
+                                                           
+                                                                <li><a class="dropdown-item" href="#">تعديل الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="{{ url('edit_invoice') }}/{{ $invoice->id }}">حذف الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="#">تغير حالة الدفع</a></li>
+                                                                <li><a class="dropdown-item" href="#">ارشفة الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="#">طباعة الفاتورة</a></li>
+                                                               
+     
+      
+                                                            </ul>
+                                                
                                             </div>
 
                                         </td>
@@ -249,6 +229,7 @@
 @endsection
 @section('js')
     <!-- Internal Data tables -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
@@ -290,11 +271,6 @@
         })
 
     </script>
-
-
-
-
-
 
 
 @endsection
