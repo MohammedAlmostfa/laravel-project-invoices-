@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    قائمة الفواتير
-@stop
+    ق~مة الفواتير المؤجلة
 @section('css')
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -24,7 +23,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة
-                    الفواتير</span>
+ الفواتير المؤجلة</span>
             </div>
         </div>
 
@@ -139,11 +138,12 @@
                                                           <ul class="dropdown-menu">
                                                            
                                                                 <li><a class="dropdown-item" href="{{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل الفاتورة</a></li>
-                                                                <li><a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
+                                                                <li><a class="dropdown-item" href="#"" data-invoice_id="{{ $invoice->id }}"
                                                                 data-toggle="modal" data-target="#delete_invoice">حذف الفاتورة</a></li>
                                                                 <li><a class="dropdown-item" href="{{ url('Status_show') }}/{{ $invoice->id }}">تغير حالة الدفع</a></li>
-                                                                <li><a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
-                                                                data-toggle="modal" data-target="#Transfer_invoice">ارشفة الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="#">ارشفة الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="#">طباعة الفاتورة</a></li>
+  
                                                             </ul>
                                             </div>
 
