@@ -27,9 +27,12 @@ Route::post('/delete_file', [InvocesDetailsController::class, 'destroy'])->name(
 Route::resource('/invoices',invoicesController::class);
 Route::resource('section', SectionController::class);
 Route::resource('product', ProductController::class);
+Route::post('Status_Update/{id}',[InvoicesController::class,'Status_Update']);
 Route::get('sectionn/{id}',[InvoicesController::class,'getproducts']);
 Route::get('invoicesdetails/{id}', [InvocesDetailsController::class, 'edait'])->name('invoicesdetails');
-Route::get('edit_invoicen/{id}',[InvoicesController::class,'edait']);
+Route::get('edit_invoice/{id}',[InvoicesController::class,'edait']);
+Route::get('Status_show/{id}',[InvoicesController::class,'show']);
+
 Route::get('/{page}', [AdminController::class, 'index']);
 
 

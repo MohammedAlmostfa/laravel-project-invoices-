@@ -138,16 +138,14 @@
                                                            </button>
                                                           <ul class="dropdown-menu">
                                                            
-                                                                <li><a class="dropdown-item" href="#">تعديل الفاتورة</a></li>
-                                                                <li><a class="dropdown-item" href="{{ url('edit_invoice') }}/{{ $invoice->id }}">حذف الفاتورة</a></li>
-                                                                <li><a class="dropdown-item" href="#">تغير حالة الدفع</a></li>
+                                                                <li><a class="dropdown-item" href="{{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="#"" data-invoice_id="{{ $invoice->id }}"
+                                                                data-toggle="modal" data-target="#delete_invoice">حذف الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="{{ url('Status_show') }}/{{ $invoice->id }}">تغير حالة الدفع</a></li>
                                                                 <li><a class="dropdown-item" href="#">ارشفة الفاتورة</a></li>
                                                                 <li><a class="dropdown-item" href="#">طباعة الفاتورة</a></li>
-                                                               
-     
-      
+  
                                                             </ul>
-                                                
                                             </div>
 
                                         </td>

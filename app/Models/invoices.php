@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class invoices extends Model
 {
     protected $fillable=[
@@ -22,12 +22,13 @@ class invoices extends Model
             'Status' ,
             'Value_Status',
             'note',
+             'Payment_Date',
      ];
   public function section()
 {
     return $this->belongsTo('App\Models\Section');
 }
-
+use SoftDeletes;
 
 
      
