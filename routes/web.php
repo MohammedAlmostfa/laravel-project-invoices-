@@ -35,7 +35,7 @@ Route::get('sectionn/{id}',[InvoicesController::class,'getproducts']);
 Route::get('invoicesdetails/{id}', [InvocesDetailsController::class, 'edait'])->name('invoicesdetails');
 Route::get('edit_invoice/{id}',[InvoicesController::class,'edait']);
 Route::get('Status_show/{id}',[InvoicesController::class,'show']);
-
+Route::get('print_invoices/{id}',[InvoicesController::class,'print']);
 Route::get('invoices_paid',[InvoicesController::class,'paid']);
 Route::get('invoices_unpaid',[InvoicesController::class,'unpaid']);
 Route::get('invoices_partial',[InvoicesController::class,'partial']);

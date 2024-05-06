@@ -216,5 +216,11 @@ use Illuminate\Support\Facades\Storage;
          $invoices = Invoices::where('Value_Status',3)->get();
         return view('invoices.invoices_Partial',compact('invoices'));
           }
+          public function print($id){
+        $invoices = invoices::where('id', $id)->first();
+        return view('invoices.Print_invoices',compact('invoices'));
+
+          }
+
 
     }

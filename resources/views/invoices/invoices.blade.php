@@ -144,6 +144,7 @@
                                                                 <li><a class="dropdown-item" href="{{ url('Status_show') }}/{{ $invoice->id }}">تغير حالة الدفع</a></li>
                                                                 <li><a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                                 data-toggle="modal" data-target="#Transfer_invoice">ارشفة الفاتورة</a></li>
+                                                                <li><a class="dropdown-item" href="{{ url('print_invoices') }}/{{ $invoice->id }}">طباعة الفاتورة</a></li>
                                                             </ul>
                                             </div>
 
