@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\Invoicsmail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
@@ -10,7 +12,9 @@ use App\Models\invoces_details;
 use Illuminate\Support\Facades\DB;
 use App\Models\section;
 use App\Models\invoices_details;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
     class InvoicesController extends Controller
     {
@@ -70,6 +74,10 @@ use Illuminate\Support\Facades\Storage;
                 $imageName = $request->pic->getClientOriginalName();
                 $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
             }
+            
+            $user = User::first();
+            Mail::to($user)->send(new Invoicsmail($invoice_id)) ;
+            return redirect('/invoices');
             session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
             return back();
         }
@@ -221,6 +229,7 @@ use Illuminate\Support\Facades\Storage;
         return view('invoices.Print_invoices',compact('invoices'));
 
           }
+      
 
 
     }
