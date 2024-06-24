@@ -8,7 +8,9 @@ use App\Http\Controllers\InvocesDetailsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SectionController;
-
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -40,6 +42,26 @@ Route::get('invoices_paid',[InvoicesController::class,'paid']);
 Route::get('invoices_unpaid',[InvoicesController::class,'unpaid']);
 Route::get('invoices_partial',[InvoicesController::class,'partial']);
 
+
+
+   
+Route::group(['middlewareAliases' => ['role:super-admin|admin']], function() {
+
+ Route::resource('users', App\Http\Controllers\UserController::class);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
+
+
+    Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+    Route::get('permissions/{permissionId}/delete', [App\Http\Controllers\PermissionController::class, 'destroy']);
+
+    Route::get('roles/{roleId}/delete', [App\Http\Controllers\RoleController::class, 'destroy']);
+    Route::get('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionToRole']);
+    Route::put('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole']);
+
+    Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
+
+});
 Route::get('/{page}', [AdminController::class, 'index']);
+
 
 
